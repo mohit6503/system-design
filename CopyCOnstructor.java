@@ -56,3 +56,11 @@ public class CopyCOnstructor {
 // more than one constructor with different parameters.
 //  It is used to create objects in different ways. The constructor to be called is determined by the number and type of arguments
 //  passed when creating an object.
+
+
+// PS C:\Users\rohit\Desktop\system design> git add .
+// PS C:\Users\rohit\Desktop\system design> git commit -m "checking"
+// [main d05de64] checking
+//  1 file changed, 1 insertion(+)
+// PS C:\Users\rohit\Desktop\system design> git branch -m main
+// PS C:\Users\rohit\Desktop\system design> git push origin main
