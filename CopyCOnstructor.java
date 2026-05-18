@@ -41,6 +41,8 @@ public class CopyCOnstructor {
 // a copy constructor is used to create a new independent object having the same data as another object.
 
 
+
+
 // this keyword is used to refer to the current object. 
 // It is used to differentiate between instance variables and local variables when they have the same name.
 //  It can also be used to call another constructor in the same class.
