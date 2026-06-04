@@ -15,4 +15,4 @@ public class StaticKeyword {
 
 // static member can be access without creating object of the class. It can be accessed directly using class name and dot operator;
 
-
+// this keyword can not be used in static context because static members belong to the class and do not have access to instance variables or methods.

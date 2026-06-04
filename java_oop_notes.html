@@ -1,0 +1,239 @@
+
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: var(--font-sans); }
+  .notes-wrap { padding: 1.5rem 0; display: flex; flex-direction: column; gap: 2rem; }
+  .section { border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-lg); overflow: hidden; }
+  .section-header { padding: 0.75rem 1.25rem; display: flex; align-items: center; gap: 10px; border-bottom: 0.5px solid var(--color-border-tertiary); }
+  .section-header i { font-size: 18px; }
+  .section-title { font-size: 15px; font-weight: 500; color: var(--color-text-primary); }
+  .section-body { padding: 1rem 1.25rem; display: flex; flex-direction: column; gap: 1rem; background: var(--color-background-primary); }
+  .rule { display: flex; gap: 10px; align-items: flex-start; }
+  .rule-num { font-size: 11px; font-weight: 500; padding: 2px 7px; border-radius: 20px; flex-shrink: 0; margin-top: 2px; }
+  .rule-text { font-size: 14px; color: var(--color-text-primary); line-height: 1.6; }
+  .rule-text code { font-family: var(--font-mono); font-size: 12px; background: var(--color-background-tertiary); padding: 1px 5px; border-radius: 4px; color: var(--color-text-secondary); }
+  .rule-text .note { font-size: 13px; color: var(--color-text-secondary); display: block; margin-top: 3px; }
+  .tag-row { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 4px; }
+  .tag { font-size: 12px; padding: 3px 10px; border-radius: 20px; font-weight: 500; }
+  .divider { height: 0.5px; background: var(--color-border-tertiary); margin: 0.25rem 0; }
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .mini-card { background: var(--color-background-secondary); border-radius: var(--border-radius-md); padding: 0.75rem 1rem; }
+  .mini-card-label { font-size: 12px; color: var(--color-text-secondary); margin-bottom: 6px; font-weight: 500; letter-spacing: 0.03em; }
+  .mini-card-list { font-size: 13px; color: var(--color-text-primary); line-height: 1.8; }
+
+  .h-purple { background: #EEEDFE; color: #3C3489; }
+  .h-teal   { background: #E1F5EE; color: #085041; }
+  .h-coral  { background: #FAECE7; color: #712B13; }
+  .h-blue   { background: #E6F1FB; color: #0C447C; }
+  .h-amber  { background: #FAEEDA; color: #633806; }
+  .h-pink   { background: #FBEAF0; color: #72243E; }
+  .h-green  { background: #EAF3DE; color: #27500A; }
+
+  .num-purple { background: #EEEDFE; color: #534AB7; }
+  .num-teal   { background: #E1F5EE; color: #0F6E56; }
+  .num-coral  { background: #FAECE7; color: #993C1D; }
+  .num-blue   { background: #E6F1FB; color: #185FA5; }
+  .num-amber  { background: #FAEEDA; color: #854F0B; }
+
+  @media (prefers-color-scheme: dark) {
+    .h-purple { background: #3C3489; color: #CECBF6; }
+    .h-teal   { background: #085041; color: #9FE1CB; }
+    .h-coral  { background: #712B13; color: #F5C4B3; }
+    .h-blue   { background: #0C447C; color: #B5D4F4; }
+    .h-amber  { background: #633806; color: #FAC775; }
+    .h-pink   { background: #72243E; color: #F4C0D1; }
+    .h-green  { background: #27500A; color: #C0DD97; }
+    .num-purple { background: #26215C; color: #AFA9EC; }
+    .num-teal   { background: #04342C; color: #5DCAA5; }
+    .num-coral  { background: #4A1B0C; color: #F0997B; }
+    .num-blue   { background: #042C53; color: #85B7EB; }
+    .num-amber  { background: #412402; color: #EF9F27; }
+    .mini-card { background: var(--color-background-secondary); }
+  }
+</style>
+
+<h2 class="sr-only">Java OOP complete notes covering static members, polymorphism, encapsulation, abstraction, and access modifiers</h2>
+
+<div class="notes-wrap">
+
+  <!-- STATIC MEMBERS -->
+  <div class="section">
+    <div class="section-header h-purple">
+      <i class="ti ti-bolt" aria-hidden="true" style="color:#534AB7"></i>
+      <span class="section-title">Static members</span>
+    </div>
+    <div class="section-body">
+      <div class="rule">
+        <span class="rule-num num-purple">1</span>
+        <span class="rule-text">A non-static (instance) method <strong>cannot</strong> directly call a static method on the same class through an instance reference alone — if you need to call it from an instance context, use the class name explicitly: <code>ClassName.staticMethod()</code>.
+          <span class="note">Non-static members belong to an object; static members belong to the class.</span>
+        </span>
+      </div>
+      <div class="divider"></div>
+      <div class="rule">
+        <span class="rule-num num-purple">2</span>
+        <span class="rule-text">Static members share a single copy of memory across all instances. Changing a static field from one object changes it for every object.</span>
+      </div>
+      <div class="divider"></div>
+      <div class="rule">
+        <span class="rule-num num-purple">3</span>
+        <span class="rule-text"><code>this</code> cannot be used inside a static method. <code>this</code> refers to the current object, but static methods have no object context — they exist before any object is created.</span>
+      </div>
+      <div class="divider"></div>
+      <div class="rule">
+        <span class="rule-num num-purple">4</span>
+        <span class="rule-text">Static members can be accessed without creating an object: <code>ClassName.member</code></span>
+      </div>
+      <div class="divider"></div>
+      <div class="rule">
+        <span class="rule-num num-purple">★</span>
+        <span class="rule-text">An inner class <strong>can</strong> be static. An outer (top-level) class <strong>cannot</strong> be static — outer classes are always either <code>public</code>, package-private, <code>abstract</code>, or <code>final</code>.</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- POLYMORPHISM -->
+  <div class="section">
+    <div class="section-header h-teal">
+      <i class="ti ti-arrows-shuffle" aria-hidden="true" style="color:#0F6E56"></i>
+      <span class="section-title">Polymorphism</span>
+    </div>
+    <div class="section-body">
+      <div class="two-col">
+        <div class="mini-card">
+          <div class="mini-card-label">Compile-time (static)</div>
+          <div class="mini-card-list"><strong>Method overloading</strong><br>Same method name, different:<br>• Number of parameters<br>• Parameter types<br>• Order of parameters</div>
+        </div>
+        <div class="mini-card">
+          <div class="mini-card-label">Runtime (dynamic)</div>
+          <div class="mini-card-list"><strong>Method overriding</strong><br>Which method runs depends on the <em>actual object</em> (not the reference type) — resolved at runtime.</div>
+        </div>
+      </div>
+      <div class="rule">
+        <span class="rule-num num-teal">▸</span>
+        <span class="rule-text"><strong>Method overriding</strong> — the call is resolved based on the <em>actual (runtime) object</em>. E.g. if <code>Animal a = new Dog()</code>, calling <code>a.sound()</code> runs <code>Dog</code>'s version.
+          <span class="note">This is true runtime polymorphism. Achieved via: concrete class → abstract class → interface.</span>
+        </span>
+      </div>
+      <div class="divider"></div>
+      <div class="rule">
+        <span class="rule-num num-teal">▸</span>
+        <span class="rule-text"><strong>Method hiding</strong> — applies when the method is declared <code>static</code>. The call is resolved based on the <em>reference type</em>, not the actual object. Static methods cannot be polymorphically dispatched.</span>
+      </div>
+      <div class="divider"></div>
+      <div class="rule">
+        <span class="rule-num num-teal">3</span>
+        <span class="rule-text">Three ways to achieve runtime polymorphism in Java:</span>
+      </div>
+      <div class="tag-row">
+        <span class="tag h-teal">1. Concrete class (IS-A)</span>
+        <span class="tag h-teal">2. Abstract class</span>
+        <span class="tag h-teal">3. Interface</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ENCAPSULATION -->
+  <div class="section">
+    <div class="section-header h-coral">
+      <i class="ti ti-lock" aria-hidden="true" style="color:#993C1D"></i>
+      <span class="section-title">Encapsulation</span>
+    </div>
+    <div class="section-body">
+      <div class="rule">
+        <span class="rule-num num-coral">✦</span>
+        <span class="rule-text">Encapsulation bundles data (fields) and the methods that operate on that data inside a single class, and hides the internal state from outside code.</span>
+      </div>
+      <div class="two-col" style="margin-top:4px">
+        <div class="mini-card">
+          <div class="mini-card-label">How to achieve it</div>
+          <div class="mini-card-list">• Declare fields as <code>private</code><br>• Expose <code>public</code> getter/setter methods</div>
+        </div>
+        <div class="mini-card">
+          <div class="mini-card-label">Why it matters</div>
+          <div class="mini-card-list">Private fields cannot be accessed directly from outside — all operations go through controlled methods, protecting data integrity.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ABSTRACTION -->
+  <div class="section">
+    <div class="section-header h-blue">
+      <i class="ti ti-eye-off" aria-hidden="true" style="color:#185FA5"></i>
+      <span class="section-title">Abstraction</span>
+    </div>
+    <div class="section-body">
+      <div class="rule">
+        <span class="rule-num num-blue">✦</span>
+        <span class="rule-text">Abstraction hides implementation details and only exposes what is necessary. The caller knows <em>what</em> a method does, not <em>how</em>.</span>
+      </div>
+      <div class="divider"></div>
+      <div class="rule">
+        <span class="rule-num num-blue">▸</span>
+        <span class="rule-text"><strong>Using an interface:</strong> Define the contract in an interface, implement it in a concrete class, then assign: <code>Interface obj = new ConcreteClass()</code>. The reference type is the interface, the actual object is the implementation — keeping the implementation hidden to the caller.</span>
+      </div>
+      <div class="divider"></div>
+      <div class="rule">
+        <span class="rule-num num-blue">!</span>
+        <span class="rule-text"><strong>Abstract class rules:</strong></span>
+      </div>
+      <div class="tag-row">
+        <span class="tag h-blue">Cannot instantiate (no <code>new</code>)</span>
+        <span class="tag h-blue">Abstract method cannot be <code>static</code> or <code>final</code></span>
+        <span class="tag h-blue">Abstract method must be inside abstract class</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ACCESS MODIFIERS -->
+  <div class="section">
+    <div class="section-header h-amber">
+      <i class="ti ti-shield-check" aria-hidden="true" style="color:#854F0B"></i>
+      <span class="section-title">Access modifiers</span>
+    </div>
+    <div class="section-body">
+      <div style="display:grid; grid-template-columns: 1fr 1fr; gap:10px">
+        <div class="mini-card">
+          <div class="mini-card-label" style="color:#854F0B">public</div>
+          <div class="mini-card-list" style="font-size:13px">Accessible everywhere — any class, any package.</div>
+        </div>
+        <div class="mini-card">
+          <div class="mini-card-label" style="color:#993C1D">private</div>
+          <div class="mini-card-list" style="font-size:13px">Accessible only within the declaring class. Not even subclasses.</div>
+        </div>
+        <div class="mini-card">
+          <div class="mini-card-label">default (package-private)</div>
+          <div class="mini-card-list" style="font-size:13px">No keyword written. Accessible within the same package only — including subclasses in the same package, but <em>not</em> subclasses in other packages.</div>
+        </div>
+        <div class="mini-card">
+          <div class="mini-card-label" style="color:#0F6E56">protected</div>
+          <div class="mini-card-list" style="font-size:13px">Accessible within the same class, same package, <em>and</em> subclasses — even subclasses in different packages.</div>
+        </div>
+      </div>
+      <div class="rule" style="margin-top:4px">
+        <span class="rule-num num-amber">↑</span>
+        <span class="rule-text" style="font-size:13px; color:var(--color-text-secondary)">Scope order (widest → narrowest): <strong>public</strong> → <strong>protected</strong> → <strong>default</strong> → <strong>private</strong></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- AGILE REFERENCE -->
+  <div class="section">
+    <div class="section-header h-pink">
+      <i class="ti ti-layout-kanban" aria-hidden="true" style="color:#993556"></i>
+      <span class="section-title">Agile hierarchy (quick ref)</span>
+    </div>
+    <div class="section-body">
+      <div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap">
+        <span class="tag h-pink" style="font-size:13px; padding:5px 14px">Epic</span>
+        <i class="ti ti-arrow-right" aria-hidden="true" style="color:var(--color-text-secondary)"></i>
+        <span class="tag h-pink" style="font-size:13px; padding:5px 14px">Story</span>
+        <i class="ti ti-arrow-right" aria-hidden="true" style="color:var(--color-text-secondary)"></i>
+        <span class="tag h-pink" style="font-size:13px; padding:5px 14px">Task / Subtask</span>
+      </div>
+      <p style="font-size:13px; color:var(--color-text-secondary); margin-top:8px">Epic = large feature goal → broken into Stories (user-facing requirements) → broken into Tasks/Subtasks (dev work items).</p>
+    </div>
+  </div>
+
+</div>
